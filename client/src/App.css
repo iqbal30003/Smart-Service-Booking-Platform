@@ -1,0 +1,108 @@
+.App {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  color: #111827;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.app-content {
+  padding-top: 5rem;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+.navbar__logo {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #111827;
+}
+
+.navbar__logo span {
+  color: #2563eb;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.navbar__link {
+  font-weight: 500;
+  color: #4b5563;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.navbar__link--active,
+.navbar__link:hover {
+  color: #111827;
+  border-color: #2563eb;
+}
+
+.navbar__actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+.btn-text {
+  background-color: transparent;
+  color: #2563eb;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.35);
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.hero {
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  border-radius: 1.5rem;
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 3vw, 3.25rem);
+  margin-bottom: 0.75rem;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  max-width: 32rem;
+  line-height: 1.7;
+}
