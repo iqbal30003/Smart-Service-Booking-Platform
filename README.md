@@ -59,7 +59,7 @@ Users can browse services, view details, and book time slots. Admins can manage 
 
 ```bash
 git clone https://github.com/iqbal30003/Smart-Service-Booking-Platform.git
-cd "Smart Service Booking Platform"
+cd "Smart-Service-Booking-Platform"
 
 cd client
 npm install
@@ -96,6 +96,3 @@ This project is designed to demonstrate:
 - **Admin dashboards and data visualization** (planned)
 
 If you’d like to review specific parts (e.g. auth, booking flow, or admin dashboard), see the corresponding folders under `client/src` and `server/src` (once the backend is added).
-
-
-
