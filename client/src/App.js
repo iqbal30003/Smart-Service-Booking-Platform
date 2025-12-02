@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import AllServices from './pages/AllServices';
 import ServiceDetails from './pages/ServiceDetails';
@@ -24,10 +25,40 @@ function App() {
             <Route path="/services" element={<AllServices />} />
             <Route path="/services/:id" element={<ServiceDetails />} />
             <Route path="/book/:id" element={<BookingPage />} />
-            <Route path="/dashboard" element={<UserDashboard />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/admin/services" element={<AdminServiceManagement />} />
-            <Route path="/admin/bookings" element={<AdminBookingManagement />} />
+
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <UserDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/services"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminServiceManagement />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/bookings"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminBookingManagement />
+                </ProtectedRoute>
+              }
+            />
+
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

@@ -4,8 +4,6 @@ import { NavLink } from 'react-router-dom';
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
-  { to: '/dashboard', label: 'Dashboard' },
-  { to: '/admin', label: 'Admin' },
 ];
 
 function Navbar() {
