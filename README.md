@@ -58,7 +58,7 @@ Users can browse services, view details, and book time slots. Admins can manage 
 #### Frontend (client)
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/iqbal30003/Smart-Service-Booking-Platform.git
 cd "Smart Service Booking Platform"
 
 cd client
