@@ -24,7 +24,14 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<AllServices />} />
             <Route path="/services/:id" element={<ServiceDetails />} />
-            <Route path="/book/:id" element={<BookingPage />} />
+            <Route
+              path="/book/:id"
+              element={
+                <ProtectedRoute>
+                  <BookingPage />
+                </ProtectedRoute>
+              }
+            />
 
             <Route
               path="/dashboard"

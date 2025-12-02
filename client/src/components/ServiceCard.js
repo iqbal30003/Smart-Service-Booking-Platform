@@ -9,6 +9,11 @@ function ServiceCard({ service }) {
   };
 
   const handleBook = () => {
+    const token = localStorage.getItem('ssbp_token');
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     navigate(`/book/${service.id}`);
   };
 
