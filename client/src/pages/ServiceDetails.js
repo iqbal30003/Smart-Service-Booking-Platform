@@ -1,10 +1,11 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { services } from '../data/services';
 
 function ServiceDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const service = services.find((s) => s.id === id);
 
@@ -19,7 +20,7 @@ function ServiceDetails() {
   const handleBook = () => {
     const token = localStorage.getItem('ssbp_token');
     if (!token) {
-      navigate('/login');
+      navigate('/login', { state: { from: location } });
       return;
     }
     navigate(`/book/${service.id}`);

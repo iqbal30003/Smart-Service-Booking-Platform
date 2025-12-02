@@ -1,8 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function ServiceCard({ service }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleView = () => {
     navigate(`/services/${service.id}`);
@@ -11,7 +12,7 @@ function ServiceCard({ service }) {
   const handleBook = () => {
     const token = localStorage.getItem('ssbp_token');
     if (!token) {
-      navigate('/login');
+      navigate('/login', { state: { from: location } });
       return;
     }
     navigate(`/book/${service.id}`);
