@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import '../styles/Auth.css';
 
 function Login() {
@@ -8,6 +8,7 @@ function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,10 +35,29 @@ function Login() {
 
       // Mock login
       console.log('Login attempt:', { email, password });
+      
+      // Determine if user is admin based on email
+      const isAdmin = email === 'admin@example.com' || email === 'admin@test.com';
+      const userData = { 
+        email, 
+        role: isAdmin ? 'admin' : 'user',
+        fullName: isAdmin ? 'Admin User' : 'Regular User'
+      };
+      
       localStorage.setItem('token', 'mock-token-' + Date.now());
-      localStorage.setItem('user', JSON.stringify({ email, role: 'user' }));
+      localStorage.setItem('user', JSON.stringify(userData));
 
-      navigate('/dashboard');
+      // Dispatch custom event to trigger navbar update
+      window.dispatchEvent(new CustomEvent('userLoggedIn', { detail: { user: userData } }));
+
+      // Redirect based on role
+      if (isAdmin) {
+        navigate('/admin/dashboard');
+      } else {
+        // Get redirect location from state or default to dashboard
+        const from = location.state?.from?.pathname || '/dashboard';
+        navigate(from);
+      }
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     } finally {

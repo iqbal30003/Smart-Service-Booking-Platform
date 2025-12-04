@@ -50,6 +50,14 @@ function App() {
               }
             />
             <Route
+              path="/admin/dashboard"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/admin/services"
               element={
                 <ProtectedRoute requireAdmin>

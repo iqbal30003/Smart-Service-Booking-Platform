@@ -3,15 +3,18 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 function ProtectedRoute({ children, requireAdmin }) {
   const location = useLocation();
-  const token = localStorage.getItem('ssbp_token');
-  const role = localStorage.getItem('ssbp_role');
+  const token = localStorage.getItem('token');
+  const user = localStorage.getItem('user');
 
   if (!token) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  if (requireAdmin && role !== 'admin') {
-    return <Navigate to="/" replace />;
+  if (requireAdmin && user) {
+    const userData = JSON.parse(user);
+    if (userData.role !== 'admin') {
+      return <Navigate to="/" replace />;
+    }
   }
 
   return children;

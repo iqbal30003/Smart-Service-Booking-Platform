@@ -10,9 +10,17 @@ function ServiceCard({ service }) {
   };
 
   const handleBook = () => {
-    const token = localStorage.getItem('ssbp_token');
+    const token = localStorage.getItem('token');
     if (!token) {
-      navigate('/login', { state: { from: location } });
+      // Store the intended booking path and redirect to login
+      navigate('/login', { 
+        state: { 
+          from: { 
+            pathname: `/book/${service.id}`,
+            search: location.search 
+          } 
+        } 
+      });
       return;
     }
     navigate(`/book/${service.id}`);
@@ -26,8 +34,8 @@ function ServiceCard({ service }) {
       </div>
       <p className="service-card__summary">{service.shortDescription || service.description}</p>
       <div className="service-card__meta">
-        {service.durationMinutes && (
-          <span>{service.durationMinutes} min</span>
+        {service.durationDays && (
+          <span>{service.durationDays} day{service.durationDays > 1 ? 's' : ''}</span>
         )}
         <span className="service-card__price">${service.price}</span>
       </div>
